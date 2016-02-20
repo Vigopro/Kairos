@@ -1,0 +1,4 @@
+*.pyc
+fabfile.py
+mysite/local_settings.py
+mysite/media/
