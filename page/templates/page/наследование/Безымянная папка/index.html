@@ -1,0 +1,40 @@
+<!--  Нужно не забыть разобраться в наследовании и настроить его -->
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="{% static "page/main.css"%}">
+		<title>{{ category.name }} :: Все для уборки</title>
+	</head>
+	<body>
+		<div id="header">
+			<h1>Все для уборки</h1>
+		</div>
+		<div id="leftmenu">
+			<ul>
+				{% for cat in cats %}
+					<li><a href="/good/{{ cat.id }}">{{ cat.name }}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div id="main">
+			<h2>{{ category.name }}</h2>
+			<table>
+				<tr>
+					<th>Название</th>
+					<th>Есть в наличии</th>
+				</tr>
+					{% for good in goods%}
+					<tr>
+						<td><a href="/goods/good/{{ good.id }}/">{{ good.name }}</a></td>
+						<td class="centered">{% if good.in_stock %}+{% endif %}</td>
+					</tr>
+					{% endfor %}
+			</table>
+		</div>
+		<div id="footer">
+			<p>Все права принаджежат компании Kairos.</p>
+		</div>
+	</body>
+</html>

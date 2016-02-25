@@ -1,0 +1,10 @@
+		<div id="leftmenu">
+			<ul>
+				{% for cat in cats%}
+					<li>
+						{% url 'page:index' cat_id=cat.id as cat_url %}
+						<a href="{{ cat_url }}">{{ cat.name }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>

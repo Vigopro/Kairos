@@ -1,0 +1,10 @@
+{% extends "page/base.html" %}
+{% block title %} {{ good.name }} :: {{ good.category.name }} {% endblock %}
+{% include "/page/includes/left_menu.html" with category="1" only %}
+{% block main %}
+	<h2>{{ good.name }}</h2>
+	<p class="category">Категория: {{ good.category.name }}</p>
+	<p>{{ good.description|linebreaksbr }}</p>
+	<p class="not-in-stock">{% if not good.in_stock %} Нет в наличии! {% endif %}</p>
+	<p><a href="/good/{{ good.category.id }}/"> Назад </a></p>
+{% endblock %}

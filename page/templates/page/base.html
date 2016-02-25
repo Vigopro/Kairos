@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="{% static "page/main.css"%}">
+		<title>{% block title %}{%endblock%} :: Все для уборки</title>
+	</head>
+	<body>
+		<div id="header">
+			<h1>Все для уборки</h1>
+		</div>
+		<div id="leftmenu">
+			<ul>
+				{% for cat in cats %}
+					<li>
+						{% url 'page:index' cat_id=cat.id as cat_url %}
+						<a href = "{{ cat_url }}">{{ cat.name }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div id="main">
+			{% block main %}
+			{% endblock %}
+		</div>
+		<div id="footer">
+			<p>Все права принаджежат компании Kairos.</p>
+		</div>
+	</body>
+</html> 
